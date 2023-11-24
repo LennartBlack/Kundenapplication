@@ -4,7 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
 public class Database {
+
+    private Connection connection;
+    public Connection getConnection() {
+        return connection;
+    }
 
     public Database() throws SQLException, ClassNotFoundException {
         try {
@@ -12,7 +18,7 @@ public class Database {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // Baue die Verbindung zur Datenbank auf
-            Connection connection = DriverManager.getConnection(url, user, password);
+            this.connection = DriverManager.getConnection(url, user, password);
 
             // Überprüfe, ob die Verbindung erfolgreich war
             if (connection != null) {
