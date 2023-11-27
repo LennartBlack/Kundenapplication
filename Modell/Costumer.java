@@ -22,6 +22,7 @@ public class Costumer {
 
     public Costumer(){
         //ID-generieren und zuweisen
+        this.ID = Identi
         //Update-Methoden aufrufen, um mehr Daten zu speichern
     }
     //Methods
