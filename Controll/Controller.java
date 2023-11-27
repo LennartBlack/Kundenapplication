@@ -1,6 +1,8 @@
 package Controll;
 
 import Database.Database;
+import Modell.Costumer;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +12,7 @@ public class Controller {
     private Database mydb;
     private String query;
     private Scanner scanner;
+    private int benutzereingabe;
     public Controller(Database mydb){
         this.mydb = mydb;
     }
@@ -20,7 +23,7 @@ public class Controller {
         System.out.println("2 für Kunden updaten");
         System.out.println("3 für Kunden löschen");
         System.out.println("4 für Kunden anlegen");
-        int benutzereingabe = scanner.nextInt();
+        this.benutzereingabe = scanner.nextInt();
         switch (benutzereingabe) {
             case 1 -> {
                 searchCostumer();
@@ -52,8 +55,33 @@ public class Controller {
         return this.query;
     }
 
-    private void updateCostumer(){
-
+    private void updateCostumer(Costumer costumer){
+        System.out.println("Welchen Wert möchtest du ändern?");
+        System.out.println("1: Anrede");
+        System.out.println("2: Titel");
+        System.out.println("3: Name");
+        System.out.println("4: familyName");
+        System.out.println("5: birthday");
+        System.out.println("6: street");
+        System.out.println("7: houseNumber");
+        System.out.println("8: plz");
+        System.out.println("9: city");
+        System.out.println("10: telephone");
+        System.out.println("11: mobil");
+        System.out.println("12: telefax");
+        System.out.println("13: email");
+        System.out.println("14: newsletter");
+        this.benutzereingabe = scanner.nextInt();
+        switch (benutzereingabe){
+            case 1 -> {
+                System.out.println("Mögliche Anreden sind:");
+                System.out.println("1: Männlich");
+                System.out.println("2: Weiblich");
+                System.out.println("3: Divers");
+                this.benutzereingabe = scanner.nextInt();
+                costumer.setAnrede(benutzereingabe);
+            }
+        }
     }
     private void deleteCostumer(){
 
