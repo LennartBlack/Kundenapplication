@@ -20,6 +20,10 @@ public class Costumer {
 
     //Constructors
 
+    public Costumer(){
+        //ID-generieren und zuweisen
+        //Update-Methoden aufrufen, um mehr Daten zu speichern
+    }
     //Methods
 
     //Getter & Setter
