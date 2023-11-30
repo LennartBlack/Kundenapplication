@@ -1,8 +1,6 @@
 package Database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 public class Database {
@@ -22,11 +20,7 @@ public class Database {
             // Baue die Verbindung zur Datenbank auf
             this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Erfolgreich mit der Datenbank verbunden!");
-            // Hier kannst du weitere Aktionen mit der Datenbank durchführen
-            // ...
 
-            // Schließe die Verbindung, wenn sie nicht mehr benötigt wird
-            connection.close();
         } catch (ClassNotFoundException e) {
             System.out.println("MySQL JDBC-Treiber nicht gefunden!");
             e.printStackTrace();
@@ -34,6 +28,10 @@ public class Database {
             System.out.println("Verbindung zur Datenbank fehlgeschlagen!");
             e.printStackTrace();
         }
+    }
+    public ResultSet query(String sqlQuery) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+        return preparedStatement.executeQuery();
     }
     public void closeConnection() throws SQLException {
         this.connection.close();
