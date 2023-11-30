@@ -3,7 +3,7 @@ package Modell;
 import java.time.LocalDate;
 public class Costumer {
     //Attributes
-    private final int ID;
+    private int ID;
     private String anrede;
     private String name;
     private String familyName;
@@ -21,9 +21,6 @@ public class Costumer {
     //Constructors
 
     public Costumer(){
-        //ID-generieren und zuweisen
-        this.ID = Identi
-        //Update-Methoden aufrufen, um mehr Daten zu speichern
     }
     //Methods
 

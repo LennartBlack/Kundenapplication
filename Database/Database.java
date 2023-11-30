@@ -35,5 +35,7 @@ public class Database {
             e.printStackTrace();
         }
     }
-
+    public void closeConnection() throws SQLException {
+        this.connection.close();
+    }
 }

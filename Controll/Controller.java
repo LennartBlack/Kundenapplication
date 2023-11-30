@@ -23,19 +23,27 @@ public class Controller {
         System.out.println("2 für Kunden updaten");
         System.out.println("3 für Kunden löschen");
         System.out.println("4 für Kunden anlegen");
+        System.out.println("5 Anwendung beenden");
         this.benutzereingabe = scanner.nextInt();
         switch (benutzereingabe) {
             case 1 -> {
-                searchCostumer();
+                // Hier Methoden zur Kundensuche einbinden
+                System.out.println("Die Möglichkeit zur Kundensuche ist noch nicht implementiert.");
             }
             case 2 -> {
-                updateCostumer();
+                // Hier Methoden zur Kundenänderung einbinden
+                System.out.println("Die Möglichkeit zur Kundenänderung ist noch nicht implementiert.");
             }
             case 3 -> {
-                deleteCostumer();
+                // Hier Methoden zur Kundenlöschung einbinden
+                System.out.println("Die Möglichkeit zur Kundenlöschung ist noch nicht implementiert.");
             }
             case 4 -> {
-                createCostumer();
+                // Hier Methoden zur Kundenanlegung einbinden
+                System.out.println("Die Möglichkeit zur Kundenanlegung ist noch nicht implementiert.");
+            }
+            case 5 -> {
+                mydb.closeConnection();
             }
             default -> {
                 ;
@@ -43,50 +51,5 @@ public class Controller {
         }
         scanner.close();
     }
-    private void searchCostumer() throws SQLException {
-        setQuery();
-        PreparedStatement query = mydb.getConnection().prepareStatement(getQuery());
-    }
 
-    private void setQuery() {
-        this.query = this.scanner.next();
-    }
-    private String getQuery(){
-        return this.query;
-    }
-
-    private void updateCostumer(Costumer costumer){
-        System.out.println("Welchen Wert möchtest du ändern?");
-        System.out.println("1: Anrede");
-        System.out.println("2: Titel");
-        System.out.println("3: Name");
-        System.out.println("4: familyName");
-        System.out.println("5: birthday");
-        System.out.println("6: street");
-        System.out.println("7: houseNumber");
-        System.out.println("8: plz");
-        System.out.println("9: city");
-        System.out.println("10: telephone");
-        System.out.println("11: mobil");
-        System.out.println("12: telefax");
-        System.out.println("13: email");
-        System.out.println("14: newsletter");
-        this.benutzereingabe = scanner.nextInt();
-        switch (benutzereingabe){
-            case 1 -> {
-                System.out.println("Mögliche Anreden sind:");
-                System.out.println("1: Männlich");
-                System.out.println("2: Weiblich");
-                System.out.println("3: Divers");
-                this.benutzereingabe = scanner.nextInt();
-                costumer.setAnrede(benutzereingabe);
-            }
-        }
-    }
-    private void deleteCostumer(){
-
-    }
-    private void createCostumer(){
-
-    }
 }
