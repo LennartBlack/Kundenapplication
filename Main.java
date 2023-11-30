@@ -1,9 +1,6 @@
-package Main;
-
-import Controll.Controller;
+import Controller.Controller;
 import Database.Database;
 
-import javax.xml.crypto.Data;
 import java.sql.SQLException;
 
 public class Main {

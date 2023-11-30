@@ -1,10 +1,7 @@
-package Controll;
+package Controller;
 
 import Database.Database;
-import Modell.Costumer;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -29,20 +26,25 @@ public class Controller {
             case 1 -> {
                 // Hier Methoden zur Kundensuche einbinden
                 System.out.println("Die Möglichkeit zur Kundensuche ist noch nicht implementiert.");
+                askWhatToDo();
             }
             case 2 -> {
                 // Hier Methoden zur Kundenänderung einbinden
                 System.out.println("Die Möglichkeit zur Kundenänderung ist noch nicht implementiert.");
+                askWhatToDo();
             }
             case 3 -> {
                 // Hier Methoden zur Kundenlöschung einbinden
                 System.out.println("Die Möglichkeit zur Kundenlöschung ist noch nicht implementiert.");
+                askWhatToDo();
             }
             case 4 -> {
                 // Hier Methoden zur Kundenanlegung einbinden
                 System.out.println("Die Möglichkeit zur Kundenanlegung ist noch nicht implementiert.");
+                askWhatToDo();
             }
             case 5 -> {
+                System.out.println("Die Anwendung wird beendet.");
                 mydb.closeConnection();
             }
             default -> {
