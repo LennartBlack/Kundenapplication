@@ -16,7 +16,6 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Database mydb = new Database();
         Controller myc = new Controller(mydb);
-
         myc.askWhatToDo();
     }
 }

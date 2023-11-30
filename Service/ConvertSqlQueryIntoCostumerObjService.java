@@ -46,6 +46,7 @@ public class ConvertSqlQueryIntoCostumerObjService {
             c.setEmail(resultSet.getNString(14));
             // Newsletter
             c.setNewsletter(resultSet.getBoolean(15));
+            costumerArrayList.add(c);
         }
         return costumerArrayList.toArray(new Costumer[0]);
     }

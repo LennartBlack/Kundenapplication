@@ -33,5 +33,6 @@ public class ConsoleOutput {
         System.out.println();
         System.out.println("***Sonstiges***");
         System.out.println("Newsletter: " + c.getNewsletter());
+        System.out.println();
     }
 }
