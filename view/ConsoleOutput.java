@@ -35,4 +35,7 @@ public class ConsoleOutput {
         System.out.println("Newsletter: " + customer.getNewsletter());
         System.out.println();
     }
+    public static void printString(String string){
+        System.out.println(string);
+    }
 }

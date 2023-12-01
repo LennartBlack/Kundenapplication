@@ -34,7 +34,8 @@ public class Controller {
         switch (benutzereingabe) {
             case 1 -> {
                 String sqlstringquery = "SELECT * FROM Costumer_application.costumer WHERE name='Saskia'";
-                ResultSet resultSet = database.query(sqlstringquery);
+                //query() kann null returnen
+                ResultSet resultSet = database.executeQuery(sqlstringquery);
                 Customer[] c = MapCustomerOperations.mapCustomerFromDatabase(resultSet);
                 for (Customer customer : c) {
                     ConsoleOutput.kundenausgabe(customer);
