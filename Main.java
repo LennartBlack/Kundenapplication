@@ -1,12 +1,11 @@
-import Controller.Controller;
-import Database.Database;
-import View.ConsoleOutput;
+import controller.Controller;
+import database.Database;
 
 import java.sql.SQLException;
 
 public class Main {
-    Database mydb = new Database();
-    Controller myc = new Controller(mydb);
+    Database database = new Database();
+    Controller controller = new Controller(database);
 
 
 
@@ -16,6 +15,6 @@ public class Main {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         Database mydb = new Database();
         Controller myc = new Controller(mydb);
-        myc.askWhatToDo();
+        myc.determineNextAction();
     }
 }

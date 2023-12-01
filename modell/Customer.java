@@ -1,9 +1,9 @@
-package Modell;
+package modell;
 
 import java.time.LocalDate;
-public class Costumer {
+public class Customer {
         //Attributes
-    private int ID;
+    private int id;
     private String gender;
     private String title;
     private String name;
@@ -19,14 +19,10 @@ public class Costumer {
     private String email;
     private boolean newsletter;
 
-
+    // TODO: Konstruktoren nutzen statt alles über Setter zu machen
     //Getter & Setter
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
+    public int getId() {
+        return id;
     }
 
     public String getGender() {

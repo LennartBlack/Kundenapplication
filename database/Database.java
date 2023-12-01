@@ -1,4 +1,4 @@
-package Database;
+package database;
 
 import java.sql.*;
 
@@ -20,7 +20,6 @@ public class Database {
             // Baue die Verbindung zur Datenbank auf
             this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
             System.out.println("Erfolgreich mit der Datenbank verbunden!");
-
         } catch (ClassNotFoundException e) {
             System.out.println("MySQL JDBC-Treiber nicht gefunden!");
             e.printStackTrace();
