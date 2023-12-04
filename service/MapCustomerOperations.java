@@ -8,12 +8,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.text.SimpleDateFormat;
 
-// TODO: Klassenname unpassend. Der Service würde eher "CustomerMapper" heißen. Alternativ "ShowCustomerService". Methoden dann eher fachlich bezeichnen.
 public class MapCustomerOperations {
     public MapCustomerOperations(Database db) throws SQLException, ClassNotFoundException {
 
     }
-    // TODO: "Obj" weglassen in Methodennamen
     public static Customer[] mapCustomerFromDatabase(ResultSet resultSet) throws SQLException {
         ArrayList<Customer> customerArrayList = new ArrayList<>();
         while(resultSet.next()) {

@@ -2,7 +2,11 @@ package modell;
 
 import java.time.LocalDate;
 public class Customer {
-        //Attributes
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    //Attributes
     private int id;
     private String gender;
     private String title;

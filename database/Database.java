@@ -1,5 +1,7 @@
 package database;
 
+import com.mysql.cj.xdevapi.PreparableStatement;
+import modell.Customer;
 import view.ConsoleOutput;
 
 import java.sql.*;
@@ -35,15 +37,35 @@ public class Database {
      * @return In case the query succeeded method returns a ResulSet. In case the query failed return is null.
      * @throws SQLException
      */
-    public static ResultSet executeQuery(String sqlQuery){
+    public ResultSet executeQuery(String sqlQuery){
         try {
-            PreparedStatement preparedStatement = Database.getConnection().prepareStatement(sqlQuery);
+            PreparedStatement preparedStatement = getConnection().prepareStatement(sqlQuery);
             return preparedStatement.executeQuery();
         }
         catch (SQLException sqlException){
             ConsoleOutput.printString(sqlException.toString());
         }
         return null;
+    }
+
+    /*
+    ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    long generatedId = generatedKeys.getLong(1);
+     */
+    public int insertStatement(String insertQuery) {
+        try {
+            PreparedStatement preparedStatement = getConnection().prepareStatement(insertQuery, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.executeUpdate();
+            ResultSet generatedId = preparedStatement.getGeneratedKeys();
+            if(generatedId.next()){
+                return generatedId.getInt(1);
+            }
+        }
+        catch (SQLException sqlException){
+            ConsoleOutput.printString(sqlException.toString());
+        }
+        return -1;
     }
     public void closeConnection() throws SQLException {
         this.connection.close();
@@ -52,4 +74,6 @@ public class Database {
     public Connection getConnection() {
         return this.connection;
     }
+
+
 }

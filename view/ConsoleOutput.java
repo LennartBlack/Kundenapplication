@@ -38,4 +38,8 @@ public class ConsoleOutput {
     public static void printString(String string){
         System.out.println(string);
     }
+
+    public static void newCustomerCreated(Customer customer) {
+        System.out.println("Der Kunde wurde erfolgreich im KMS eingetragen mit der Kundennummer: " + customer.getId());
+    }
 }

@@ -2,6 +2,7 @@ package controller;
 
 import database.Database;
 import modell.Customer;
+import service.CustomerOperations;
 import service.MapCustomerOperations;
 import view.ConsoleOutput;
 
@@ -14,6 +15,7 @@ import java.util.Scanner;
 public class Controller {
     private Database database;
     ConsoleOutput consoleOutput;
+    CustomerOperations customerOperations;
     private String query;
     private Scanner scanner;
     private int benutzereingabe;
@@ -21,6 +23,7 @@ public class Controller {
     public Controller(Database db) throws SQLException, ClassNotFoundException {
         this.database = db;
         this.consoleOutput = new ConsoleOutput(db);
+        this.customerOperations = new CustomerOperations(db);
     }
     public void determineNextAction() throws SQLException {
         System.out.println("Welche Aktion möchtest du als nächstes ausführen? ");
@@ -55,7 +58,9 @@ public class Controller {
                 determineNextAction();
             }
             case 4 -> {
-                createCustomer();
+                Customer customer = createCustomer();
+                this.customerOperations.insertCostumerToDatabase(customer);
+                ConsoleOutput.newCustomerCreated(customer);
                 System.out.println("Die Möglichkeit zur Kundenanlegung ist noch nicht implementiert.");
                 determineNextAction();
             }
@@ -67,9 +72,9 @@ public class Controller {
         }
         scanner.close();
     }
-    public static void createCustomer() {
+    public static Customer createCustomer() {
         Scanner scanner = new Scanner(System.in);
-        Customer c = new Customer();
+        Customer customer = new Customer();
 
         // Gender
         System.out.println("Gender?");
@@ -78,69 +83,74 @@ public class Controller {
         System.out.println("3 für Divers");
         int gender = scanner.nextInt();
         switch (gender) {
-            case 1 -> c.setGender("Herr");
-            case 2 -> c.setGender("Frau");
-            case 3 -> c.setGender("Divers");
-            default -> c.setGender(null);
+            case 1 -> customer.setGender("Herr");
+            case 2 -> customer.setGender("Frau");
+            case 3 -> customer.setGender("Divers");
+            default -> customer.setGender(null);
         }
 
         // Titel
         System.out.println("Titel?");
+        System.out.println("0 für keinen Titel");
         System.out.println("1 für Dr.");
         System.out.println("2 für Prof.");
         int titel = scanner.nextInt();
         switch (titel) {
-            case 1 -> c.setTitle("Dr.");
-            case 2 -> c.setTitle("Prof.");
-            default -> c.setTitle(null);
+            case 0 -> customer.setTitle("");
+            case 1 -> customer.setTitle("Dr.");
+            case 2 -> customer.setTitle("Prof.");
+            default -> customer.setTitle(null);
         }
+        customer.setName(scanner.nextLine());
+
         // Name
         System.out.println("Vorname?");
-        c.setName(scanner.nextLine());
-
+        customer.setName(scanner.nextLine());
         // Family name
         System.out.println("Nachname?");
-        c.setFamilyName(scanner.nextLine());
+        customer.setFamilyName(scanner.nextLine());
 
         // Birthday
         System.out.println("Geburtsdatum? <<yyyy-MM-dd>>");
-        c.setBirthday(LocalDate.parse(scanner.nextLine()));
+        customer.setBirthday(LocalDate.parse(scanner.nextLine()));
 
         // Street
         System.out.println("Straße?");
-        c.setStreet(scanner.nextLine());
+        customer.setStreet(scanner.nextLine());
 
         // House number
         System.out.println("Hausnummber?");
-        c.setHouseNumber(scanner.nextLine());
+        customer.setHouseNumber(scanner.nextLine());
 
         // Postcode
         System.out.println("PLZ?");
-        c.setStreet(scanner.nextLine());
+        customer.setPlz(scanner.nextLine());
 
         // City
         System.out.println("Stadt?");
-        c.setCity(scanner.nextLine());
+        customer.setCity(scanner.nextLine());
 
         // Telephone
         System.out.println("Telefon?");
-        c.setTelefon(scanner.nextLine());
+        customer.setTelefon(scanner.nextLine());
 
         // Mobil
         System.out.println("Mobil?");
-        c.setMobil(scanner.nextLine());
+        customer.setMobil(scanner.nextLine());
 
         // Telefax
         System.out.println("Telefax?");
-        c.setTelefax(scanner.nextLine());
+        customer.setTelefax(scanner.nextLine());
 
         // E-Mail
         System.out.println("E-Mail?");
-        c.setEmail(scanner.nextLine());
+        customer.setEmail(scanner.nextLine());
 
         // Newsletter
         System.out.println("Newsletter?");
-        c.setNewsletter(scanner.nextBoolean());
+        customer.setNewsletter(scanner.nextBoolean());
+
+        return customer;
     }
 
 }
