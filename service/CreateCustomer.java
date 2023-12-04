@@ -1,6 +1,8 @@
 package service;
 
 import modell.Customer;
+
+import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -43,7 +45,13 @@ public class CreateCustomer {
         customer.setFamilyName(scanner.nextLine());
 
         System.out.println("Geburtsdatum? <<yyyy-MM-dd>>");
-        customer.setBirthday(LocalDate.parse(scanner.nextLine()));
+        String birthday = scanner.nextLine();
+        try{
+            customer.setBirthday(LocalDate.parse(birthday));
+        }
+        catch(DateTimeException e){
+            customer.setBirthday(null);
+        }
 
         System.out.println("Straße?");
         customer.setStreet(scanner.nextLine());
@@ -69,8 +77,8 @@ public class CreateCustomer {
         System.out.println("E-Mail?");
         customer.setEmail(scanner.nextLine());
 
-        System.out.println("Newsletter?");
-        customer.setNewsletter(scanner.nextBoolean());
+        System.out.println("Newsletter? 'j' or 'n'");
+        customer.setNewsletter(scanner.nextLine().equals("y"));
 
         return customer;
     }

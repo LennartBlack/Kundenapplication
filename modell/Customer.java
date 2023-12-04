@@ -1,6 +1,8 @@
 package modell;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Customer {
 
     //Attributes
@@ -59,8 +61,9 @@ public class Customer {
         this.familyName = familyName;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public String getBirthday() {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        return this.birthday.format(dateTimeFormatter);
     }
 
     public void setBirthday(LocalDate birthday) {
