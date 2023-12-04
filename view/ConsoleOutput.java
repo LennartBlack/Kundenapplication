@@ -6,11 +6,9 @@ import modell.Customer;
 import java.sql.SQLException;
 
 public class ConsoleOutput {
-    Database database;
-    public ConsoleOutput(Database database){
-        this.database = database;
+    private ConsoleOutput(){
     }
-    public static void kundenausgabe(Customer customer) throws SQLException {
+    public static void kundenausgabe(Customer customer){
         System.out.println("***Zur Person***");
         System.out.println("ID: " + customer.getId());
         System.out.println("Anrede:  " + customer.getGender());
@@ -37,6 +35,9 @@ public class ConsoleOutput {
     }
     public static void printString(String string){
         System.out.println(string);
+    }
+    public static void sqlException(){
+        System.out.println("Ein Fehler im SQL-Statement ist unterlaufen.");
     }
 
     public static void newCustomerCreated(Customer customer) {

@@ -1,43 +1,28 @@
 package database;
 
-import com.mysql.cj.xdevapi.PreparableStatement;
-import modell.Customer;
 import view.ConsoleOutput;
-
 import java.sql.*;
+import java.util.Optional;
 
 
 public class Database {
+    //Attributes
     private static final String URL = "jdbc:mysql://localhost:3306/costumer_application";
     private static final String USER = "user_2";
     private static final String PASSWORD = "1234";
-    private Connection connection;
 
-
-    public Database() throws SQLException, ClassNotFoundException {
-        try {
-            // Registriere den MySQL JDBC-Treiber
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Baue die Verbindung zur Datenbank auf
-            this.connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Erfolgreich mit der Datenbank verbunden!");
-        } catch (ClassNotFoundException e) {
-            System.out.println("MySQL JDBC-Treiber nicht gefunden!");
-            e.printStackTrace();
-        } catch (SQLException e) {
-            System.out.println("Verbindung zur Datenbank fehlgeschlagen!");
-            e.printStackTrace();
-        }
+    //Contructor
+    public Database(){
     }
 
+    //Methods
     /**
      *
      * @param sqlQuery Muss eine korrekte SQL-Query in Form eines String
      * @return In case the query succeeded method returns a ResulSet. In case the query failed return is null.
      * @throws SQLException
      */
-    public ResultSet executeQuery(String sqlQuery){
+    public static ResultSet executeQuery(String sqlQuery){
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(sqlQuery);
             return preparedStatement.executeQuery();
@@ -48,32 +33,45 @@ public class Database {
         return null;
     }
 
-    /*
-    ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-                if (generatedKeys.next()) {
-                    long generatedId = generatedKeys.getLong(1);
+    /**
+     *
+     * @param insertQuery Insert SQL- Statement in Textform.
+     * @return Die von der Datenbank generierte ID
      */
-    public int insertStatement(String insertQuery) {
+    public static Optional<Integer> insertStatement(String insertQuery) throws SQLException {
         try {
             PreparedStatement preparedStatement = getConnection().prepareStatement(insertQuery, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.executeUpdate();
             ResultSet generatedId = preparedStatement.getGeneratedKeys();
             if(generatedId.next()){
-                return generatedId.getInt(1);
+                return Optional.of(generatedId.getInt(1));
             }
+
+            getConnection().close();
         }
-        catch (SQLException sqlException){
-            ConsoleOutput.printString(sqlException.toString());
+        catch (SQLException | NullPointerException sqlException){
+            System.out.println("Die Verbindung zur Datenbank ist fehlgeschlagen.");
         }
-        return -1;
-    }
-    public void closeConnection() throws SQLException {
-        this.connection.close();
+
+        return Optional.empty();
     }
 
-    public Connection getConnection() {
-        return this.connection;
+    public static Connection getConnection() {
+        try {
+            // TODO für später: Verbindung erst bei Datenbankaufruf herstellen und dann auch wieder schließen
+            // Registriere den MySQL JDBC-Treiber
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Baue die Verbindung zur Datenbank auf
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Erfolgreich mit der Datenbank verbunden.");
+
+            return connection;
+        } catch (ClassNotFoundException e) {
+            System.out.println("Der Softwaretreiber wurde nicht gefunden.");
+        } catch (SQLException e) {
+            System.out.println("Die Verbindung zur Datenbank ist fehlgeschlagen.");
+        }
+        return null;
     }
-
-
 }

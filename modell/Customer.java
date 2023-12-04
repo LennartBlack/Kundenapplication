@@ -2,9 +2,6 @@ package modell;
 
 import java.time.LocalDate;
 public class Customer {
-    public void setId(int id) {
-        this.id = id;
-    }
 
     //Attributes
     private int id;
@@ -28,7 +25,9 @@ public class Customer {
     public int getId() {
         return id;
     }
-
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getGender() {
         return gender;
     }

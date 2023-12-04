@@ -1,4 +1,5 @@
 import java.sql.SQLException;
+import java.text.DateFormat;
 import java.util.Scanner;
 import java.io.ByteArrayInputStream;
 public class Test {
@@ -23,6 +24,12 @@ public class Test {
         System.out.println("**********************");
         System.out.println();
 
+        Test.scanner = new Scanner(System.in);
+        System.out.println("**********************");
+        String[] testArray = new String[]{"1", "2", "Max", "Mustermann", "Weg", "3b", "12345", "Burghausen", "123", "456", "789", "mm@ewe.de"};
+        //kundenanlegung();
+        System.out.println("**********************");
+        System.out.println();
     }
 
     private static void twoInputs(String input1, String input2) throws SQLException, ClassNotFoundException {
@@ -53,4 +60,6 @@ public class Test {
         Main.main(null);
         System.out.println("-----------");
     }
+
+   // private static void kundenanlegung(String[] stringArray, DateFormat date, boolean newsletter, )
 }
