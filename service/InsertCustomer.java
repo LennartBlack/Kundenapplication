@@ -16,14 +16,11 @@ public class InsertCustomer {
             // TODO mit "(?,?,?)" arbeiten
             // TODO auslagern in Datenbank "insert.." Part
             // TODO Exceptionbehandlung generell
-            System.out.println("Test5");
             String insertQueryPreset = "Insert into Costumer_application.customer" +
                     " (gender, titel, name, family_name, birthday, street, house_number, " +
-                    "postcode, city, telephone, mobil, telefax, email, newsletter) values (?,?)";
+                    "postcode, city, telephone, mobil, telefax, email, newsletter) values (";
             String insertQuery = insertQueryPreset + InsertCustomer.customerDataInSqlValues(customer);
-            System.out.println("Test6");
             Optional<Integer> customerId = Database.insertStatement(insertQuery);
-            System.out.println("Test3");
             if(customerId.isPresent()){
                 customer.setId(customerId.get());
                 return true;
@@ -41,7 +38,7 @@ public class InsertCustomer {
 
     private static String customerDataInSqlValues(Customer customer) {
         System.out.println("Test8");
-        return "('" + customer.getGender() + "', '" + customer.getTitle() + "', '"
+        return "'" + customer.getGender() + "', '" + customer.getTitle() + "', '"
                 + customer.getName() + "', '" + customer.getFamilyName() + "', '" + customer.getBirthday()
                 + "', '" + customer.getStreet() + "', '" + customer.getHouseNumber() + "', '" + customer.getPlz() + "', '"
                 + customer.getCity() + "', '" + customer.getTelefon() + "', '" + customer.getMobil() + "', '"

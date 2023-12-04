@@ -49,8 +49,12 @@ public class Database {
 
             getConnection().close();
         }
-        catch (SQLException | NullPointerException sqlException){
-            System.out.println("Die Verbindung zur Datenbank ist fehlgeschlagen.");
+        catch (SQLException sqlException){
+            System.out.println("Die Verbindung zur Datenbank ist fehlgeschlagen." + sqlException);
+        }
+        catch (NullPointerException nullPointerException){
+            System.out.println("Kritischer Fehler.");
+
         }
 
         return Optional.empty();

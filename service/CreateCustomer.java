@@ -6,6 +6,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+
 public class CreateCustomer {
     private CreateCustomer(){
     }
@@ -79,6 +80,8 @@ public class CreateCustomer {
 
         System.out.println("Newsletter? 'j' or 'n'");
         customer.setNewsletter(scanner.nextLine().equals("y"));
+
+
 
         return customer;
     }

@@ -80,14 +80,12 @@ public class Controller {
             case 4 -> {
                 Customer customer = CreateCustomer.createCustomer();
 
-                System.out.println("Test1");
                 if(InsertCustomer.insertCostumerToDatabase(customer)) {
                     ConsoleOutput.newCustomerCreated(customer);
                 }
                 else{
                     ConsoleOutput.failedToCreateCustomer();
                 }
-                System.out.println("Test2");
                 determineNextAction();
             }
             case 5 -> {
