@@ -37,7 +37,6 @@ public class InsertCustomer {
     }
 
     private static String customerDataInSqlValues(Customer customer) {
-        System.out.println("Test8");
         return "'" + customer.getGender() + "', '" + customer.getTitle() + "', '"
                 + customer.getName() + "', '" + customer.getFamilyName() + "', '" + customer.getBirthday()
                 + "', '" + customer.getStreet() + "', '" + customer.getHouseNumber() + "', '" + customer.getPlz() + "', '"
