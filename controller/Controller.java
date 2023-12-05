@@ -45,6 +45,7 @@ public class Controller {
                     ConsoleOutput.kundenausgabe(customer);
                 }*/
 
+                System.out.println();
                 System.out.println("Die Möglichkeit zur Kundensuche ist noch nicht implementiert. Die Ausgabe aber schon.");
                 Customer customer1 = new Customer();
                 customer1.setId(0);
@@ -59,23 +60,22 @@ public class Controller {
                 customer1.setCity("Musterdorf");
                 customer1.setMobil("01234567");
                 customer1.setTelefon("+49 30 123456789");
-                customer1.setEmail("m.m@dein-email-provider.de");
+                customer1.setTelefax("+49 30 234567891");
+                customer1.setEmail("max@dein-email-provider.de");
                 customer1.setNewsletter(true);
-                ConsoleOutput.kundenausgabe(customer1);
+                //ConsoleOutput.kundenausgabe(customer1);
 
 
                 Customer customer2 = new Customer();
                 customer2.setId(1);
-                customer2.setGender("Frau");
                 customer2.setName("Lea");
                 customer2.setFamilyName("Musterfrau");
-                customer2.setBirthday(LocalDate.parse("1900-01-02"));
                 customer2.setStreet("Musterstrasse");
                 customer2.setHouseNumber("1");
                 customer2.setPlz("12345");
                 customer2.setCity("Musterdorf");
                 customer2.setTelefon("+49 30 123456789");
-                customer2.setEmail("m.m@dein-email-provider.de");
+                customer2.setEmail("lea@dein-email-provider.de");
                 customer2.setNewsletter(false);
                 ConsoleOutput.kundenausgabe(customer2);
 

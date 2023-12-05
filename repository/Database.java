@@ -1,4 +1,4 @@
-package database;
+package repository;
 
 import view.ConsoleOutput;
 import java.sql.*;
@@ -50,7 +50,7 @@ public class Database {
             getConnection().close();
         }
         catch (SQLException sqlException){
-            System.out.println("Die Verbindung zur Datenbank ist fehlgeschlagen." + sqlException);
+            System.out.println("Die Datenbank blockiert die Eingabe.");
         }
         catch (NullPointerException nullPointerException){
             System.out.println("Kritischer Fehler.");

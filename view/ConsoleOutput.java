@@ -9,6 +9,7 @@ public class ConsoleOutput {
     private ConsoleOutput(){
     }
     public static void kundenausgabe(Customer customer){
+        System.out.println("****************");
         System.out.println("***Zur Person***");
         System.out.println("ID: " + customer.getId());
         System.out.println("Anrede:  " + convertNullToBusinessLanguage(customer.getGender()));
@@ -32,6 +33,9 @@ public class ConsoleOutput {
         System.out.println("***Sonstiges***");
         System.out.println("Newsletter: " + convertBooleanToBusinessLanguage(customer.getNewsletter()));
         System.out.println();
+        System.out.println("****************");
+        System.out.println();
+        System.out.println();
     }
 
     public static void printString(String string){
@@ -41,6 +45,6 @@ public class ConsoleOutput {
         System.out.println("Der Kunde wurde erfolgreich im KMS eingetragen mit der Kundennummer: " + customer.getId());
     }
     public static void failedToCreateCustomer() {
-        System.out.println("Ein unerwarteter Fehler ist aufgetreten.");
+        System.out.println("Die eingegebenen Daten sind nicht valide.");
     }
 }

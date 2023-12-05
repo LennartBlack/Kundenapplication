@@ -7,12 +7,6 @@ public class Util {
         }
         return value;
     }
-    public static String convertNullToEmptyString(String value){
-        if(value==null){
-            return "";
-        }
-        return value;
-    }
     public static String convertBooleanToBusinessLanguage(boolean value){
         if(value){
             return "Abonniert";

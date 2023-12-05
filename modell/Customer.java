@@ -62,8 +62,14 @@ public class Customer {
     }
 
     public String getBirthday() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        return this.birthday.format(dateTimeFormatter);
+        try{
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String returnValue = this.birthday.format(dateTimeFormatter);
+            return returnValue;
+        }
+        catch(Exception e){
+            return null;
+        }
     }
 
     public void setBirthday(LocalDate birthday) {

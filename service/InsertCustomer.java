@@ -1,6 +1,6 @@
 package service;
 
-import database.Database;
+import repository.Database;
 import modell.Customer;
 import java.util.Optional;
 
