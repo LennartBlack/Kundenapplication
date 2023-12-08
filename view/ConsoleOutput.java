@@ -9,6 +9,7 @@ public class ConsoleOutput {
     private ConsoleOutput(){
     }
     public static void kundenausgabe(Customer customer){
+        System.out.println();
         System.out.println("****************");
         System.out.println("***Zur Person***");
         System.out.println("ID: " + customer.getId());

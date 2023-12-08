@@ -33,6 +33,25 @@ public class Database {
         return null;
     }
 
+    /** Method to delete or update a customer
+     *
+     * @param sqlQuery Delete-Query
+     * @return affected rows if successfull. Otherwise -1.
+     */
+    public static int executeUpdate(String sqlQuery){
+        try {
+            Statement statement = getConnection().createStatement();
+            return statement.executeUpdate(sqlQuery);
+        }
+        catch (SQLException sqlException){
+            ConsoleOutput.printString(sqlException.toString());
+        }
+        catch(NullPointerException nullPointerException){
+            System.out.println("Verbindung zur Datenbank fehlgeschlagen.");
+        }
+        return -1;
+    }
+
     /**
      *
      * @param insertQuery Insert SQL- Statement in Textform.

@@ -2,6 +2,7 @@ package controller;
 
 import modell.Customer;
 import service.CreateCustomer;
+import service.DeleteCustomer;
 import service.InsertCustomer;
 import view.ConsoleOutput;
 
@@ -22,6 +23,7 @@ public class Controller {
 
     // Methods
     public void determineNextAction() throws SQLException {
+        System.out.println();
         System.out.println("Welche Aktion möchtest du als nächstes ausführen? ");
         this.scanner = new Scanner(System.in);
         System.out.println("1 für Kunden suchen");
@@ -63,7 +65,7 @@ public class Controller {
                 customer1.setTelefax("+49 30 234567891");
                 customer1.setEmail("max@dein-email-provider.de");
                 customer1.setNewsletter(true);
-                //ConsoleOutput.kundenausgabe(customer1);
+                ConsoleOutput.kundenausgabe(customer1);
 
 
                 Customer customer2 = new Customer();
@@ -77,9 +79,9 @@ public class Controller {
                 customer2.setTelefon("+49 30 123456789");
                 customer2.setEmail("lea@dein-email-provider.de");
                 customer2.setNewsletter(false);
-                ConsoleOutput.kundenausgabe(customer2);
+                //ConsoleOutput.kundenausgabe(customer2);
 
-
+                System.out.println();
                 determineNextAction();
             }
             case 2 -> {
@@ -90,7 +92,7 @@ public class Controller {
             }
             case 3 -> {
                 // Hier Methoden zur Kundenlöschung einbinden
-                System.out.println("Die Möglichkeit zur Kundenlöschung ist noch nicht implementiert.");
+                DeleteCustomer.deleteCustomer();
 
                 determineNextAction();
             }
@@ -109,7 +111,10 @@ public class Controller {
                 System.out.println("Die Anwendung wird beendet.");
                 System.exit(1);
             }
-            default -> {}
+            default -> {
+                System.out.println("Ungültige Eingabe");
+                determineNextAction();
+            }
         }
         scanner.close();
     }
