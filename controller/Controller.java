@@ -4,8 +4,8 @@ import modell.Customer;
 import service.CreateCustomer;
 import service.DeleteCustomer;
 import service.InsertCustomer;
+import service.exceptions.DeleteCustomerFailed;
 import view.ConsoleOutput;
-
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -91,16 +91,20 @@ public class Controller {
                 determineNextAction();
             }
             case 3 -> {
-                // Hier Methoden zur Kundenlöschung einbinden
-                DeleteCustomer.deleteCustomer();
-
+                try {
+                    DeleteCustomer.deleteCustomer();
+                }
+                catch (DeleteCustomerFailed e){
+                    System.out.println("Auftrag konnte nicht korrekt ausgeführt werden");
+                }
                 determineNextAction();
             }
             case 4 -> {
                 Customer customer = CreateCustomer.createCustomer();
-
-                if(InsertCustomer.insertCostumerToDatabase(customer)) {
-                    ConsoleOutput.newCustomerCreated(customer);
+                try {
+                    if (InsertCustomer.insertCostumerToDatabase(customer)) {
+                        ConsoleOutput.newCustomerCreated(customer);
+                    }
                 }
                 else{
                     ConsoleOutput.failedToCreateCustomer();
