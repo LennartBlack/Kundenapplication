@@ -105,11 +105,12 @@ public class Controller {
                     if (InsertCustomer.insertCostumerToDatabase(customer)) {
                         ConsoleOutput.newCustomerCreated(customer);
                     }
-                }
-                else{
+                }catch (Exception e) {
                     ConsoleOutput.failedToCreateCustomer();
                 }
-                determineNextAction();
+                finally {
+                    determineNextAction();
+                }
             }
             case 5 -> {
                 System.out.println("Die Anwendung wird beendet.");
