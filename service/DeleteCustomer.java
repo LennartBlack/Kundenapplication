@@ -1,16 +1,16 @@
 package service;
 
-import controller.Controller;
 import repository.Database;
 import service.exceptions.DeleteCustomerFailed;
-
 import java.util.Scanner;
 
 public class DeleteCustomer {
 
+    //Constructor
     private DeleteCustomer(){
     }
 
+    //Methods
     public static void deleteCustomer() throws DeleteCustomerFailed {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Geben Sie die Kundennummer des Kunden ein, der gelöscht werden soll.");
