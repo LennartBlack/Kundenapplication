@@ -22,7 +22,7 @@ public class InsertCustomer {
             String insertQuery = insertQueryPreset + InsertCustomer.customerDataInSqlValues(customer);
             Optional<Integer> customerId = Database.insertStatement(insertQuery);
             if(customerId.isPresent()){
-                customer.setId(customerId.get());
+                customer.setCustomerNumber(customerId.get());
                 return true;
             } else{
                 // TODO Fehlerbehandlung

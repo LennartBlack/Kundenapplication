@@ -4,10 +4,7 @@ import modell.Customer;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.DateTimeException;
-import java.time.LocalDate;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 
 public class CreateCustomer {
@@ -17,7 +14,7 @@ public class CreateCustomer {
         Scanner scanner = new Scanner(System.in);
         Customer customer = new Customer();
 
-        System.out.println("Gender?");
+        System.out.println("Welches Gender hat der Kunde?");
         System.out.println("1 für Herr");
         System.out.println("2 für Frau");
         System.out.println("3 für Divers");
@@ -29,42 +26,34 @@ public class CreateCustomer {
             default -> customer.setGender(null);
         }
 
-        System.out.println("Titel?");
-        System.out.println("0 für keinen Titel");
-        System.out.println("1 für Dr.");
-        System.out.println("2 für Prof.");
-        int titel = scanner.nextInt();
-        switch (titel) {
-            case 0 -> customer.setTitle("");
-            case 1 -> customer.setTitle("Dr.");
-            case 2 -> customer.setTitle("Prof.");
-            default -> customer.setTitle(null);
-        }
-
+        System.out.println("Welche Titel hat der Kunde?");
+        String titel = scanner.nextLine();
+        titel = scanner.nextLine();
+        customer.setTitle(titel);
         System.out.println();
 
-        System.out.println("Vorname?");
+        System.out.println("Wie heißt der Kunde mit Vornamen?");
         String name = scanner.nextLine();
         while (!name.matches("^[a-zA-Z]+$")){
-            System.out.println("Vorname?");
+            System.out.println("Der Vorname darf nur Buchstaben enthalten. Bitte erneut versuchen.");
             name = scanner.nextLine();
         }
         customer.setName(name);
         System.out.println();
 
-        System.out.println("Nachname?");
+        System.out.println("Wie heißt der Kunde mit Nachnamen?");
         String familyName = scanner.nextLine();
         while (!familyName.matches("^[a-zA-Z]+$")){
-            System.out.println("Nachname?");
+            System.out.println("Der Nachname darf nur Buchstaben enthalten. Bitte erneut versuchen.");
             familyName = scanner.nextLine();
         }
         customer.setFamilyName(familyName);
         System.out.println();
 
-        System.out.println("Geburtsdatum? <<yyyy-MM-dd>>");
+        System.out.println("Geben Sie das Geburtsdatum des Kunden ein. Das Format lautet: <<dd-MM-yyyy>>");
         String birthday = scanner.nextLine();
         while (!isValidDateFormat(birthday,"dd-MM-yyyy")){
-            System.out.println("Geburtsdatum? <<yyyy-MM-dd>>");
+            System.out.println("Das Geburtsdatum wurde falsch eingegeben. Bitte erneut versuchen. <<dd-MM-yyyy>>");
             birthday = scanner.nextLine();
         }
         System.out.println();
@@ -77,51 +66,52 @@ public class CreateCustomer {
         customer.setHouseNumber(scanner.nextLine());
         System.out.println();
 
-        System.out.println("PLZ?");
+        System.out.println("Geben Sie die Postleitzahl der Wohnadresse des Kunden ein.");
         String postcode = scanner.nextLine();
-        while (postcode.matches("^[a-zA-Z]+$")){
-            System.out.println("PLZ?");
+        while (!postcode.matches("\\d+") && (postcode.length() != 5)){
+            System.out.println("Fehlerhafte Eingabe. Geben Sie die Postleitzahl der Wohnadresse des Kunden ein.");
             postcode = scanner.nextLine();
         }
         customer.setPlz(postcode);
         System.out.println();
 
-        System.out.println("Stadt?");
+        System.out.println("Geben Sie die Stadt/ Ort der Wohnadresse des Kunden ein?");
         String city = scanner.nextLine();
-        while(city.matches("^[a-zA-Z]+$")){
-            System.out.println("Stadt?");
+        while(!city.matches("^[a-zA-Z]+$")){
+            System.out.println("Fehlerhafte Eingabe. Geben Sie die Stadt/ Ort der Wohnadresse des Kunden ein?");
             city = scanner.nextLine();
         }
-        customer.setCity(city;
+        customer.setCity(city);
         System.out.println();
 
-        System.out.println("Telefon?");
+        System.out.println("Geben Sie die Telefonnummer des Kunden ein. Beginnend mit einer 0. Eingabe ohne +,(,),...");
         String telefon = scanner.nextLine();
-        while(!telefon.matches("\\d+")){
-            System.out.println("Telefon?");
+        while(!telefon.matches("^0\\d+")){
+            System.out.println("Fehlerhafte Eingabe. Geben Sie die Telefonnummer des Kunden ein. Beginnend mit einer 0. Eingabe ohne +,(,),...");
             telefon = scanner.nextLine();
         }
         customer.setTelefon(telefon);
         System.out.println();
 
-        System.out.println("Mobil?");
+        System.out.println("Geben Sie die Mobilnummer des Kunden ein. Beginnend mit einer 0. Eingabe ohne +,(,),...");
         String mobil = scanner.nextLine();
-        while(!mobil.matches("\\d+")){
-            System.out.println("Mobil?");
+        while(!mobil.matches("^0\\d+")){
+            System.out.println("Fehlerhafte Eingabe. Geben Sie die Mobilnummer des Kunden ein. Beginnend mit einer 0. Eingabe ohne +,(,),...");
             mobil = scanner.nextLine();
         }
         customer.setMobil(mobil);
         System.out.println();
 
+        System.out.println("Geben Sie die Telefaxnummer des Kunden ein. Beginnend mit einer 0. Eingabe ohne +,(,),...");
         String telefax = scanner.nextLine();
-        while(!telefax.matches("\\d+")) {
-            System.out.println("Telefax?");
+        while(!telefax.matches("^0\\d+")) {
+            System.out.println("Fehlerhafte Eingabe. Geben Sie die Mobilnummer des Kunden ein. Beginnend mit einer 0. Eingabe ohne +,(,),...");
             telefax = scanner.nextLine();
         }
         customer.setTelefax(telefax);
         System.out.println();
 
-        System.out.println("E-Mail?");
+        System.out.println("Geben Sie die E-Mail-Adresse des Kunden ein.");
         String emailInput;
         emailInput = scanner.nextLine();
         while(!emailInput.contains("@")){
@@ -135,7 +125,7 @@ public class CreateCustomer {
         String newsletterInput;
         newsletterInput = scanner.nextLine();
         while(!newsletterInput.equals('j') || !newsletterInput.equals('n')){
-            System.out.println("Ungültige Eingabe. Bitte erneut eingeben.");
+            System.out.println("Ungültige Eingabe. Soll der Newsletter abonniert werden? 'j' or 'n'");
             newsletterInput = scanner.nextLine();
         }
         if(newsletterInput.equals('j')) {
@@ -144,8 +134,6 @@ public class CreateCustomer {
             customer.setNewsletter(false);
         }
         System.out.println();
-
-
 
         return customer;
     }

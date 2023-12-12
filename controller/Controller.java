@@ -1,6 +1,7 @@
 package controller;
 
 import modell.Customer;
+import service.CheckDuplicate;
 import service.CreateCustomer;
 import service.DeleteCustomer;
 import service.InsertCustomer;
@@ -50,7 +51,7 @@ public class Controller {
                 System.out.println();
                 System.out.println("Die Möglichkeit zur Kundensuche ist noch nicht implementiert. Die Ausgabe aber schon.");
                 Customer customer1 = new Customer();
-                customer1.setId(0);
+                customer1.setCustomerNumber(0);
                 customer1.setGender("Herr");
                 customer1.setTitle("Dr.");
                 customer1.setName("Max");
@@ -69,7 +70,7 @@ public class Controller {
 
 
                 Customer customer2 = new Customer();
-                customer2.setId(1);
+                customer2.setCustomerNumber(1);
                 customer2.setName("Lea");
                 customer2.setFamilyName("Musterfrau");
                 customer2.setStreet("Musterstrasse");
@@ -101,16 +102,19 @@ public class Controller {
             }
             case 4 -> {
                 Customer customer = CreateCustomer.createCustomer();
-                try {
-                    if (InsertCustomer.insertCostumerToDatabase(customer)) {
-                        ConsoleOutput.newCustomerCreated(customer);
+                if(CheckDuplicate.checkDuplicate(customer) != -1) {
+                    try {
+                        if (InsertCustomer.insertCostumerToDatabase(customer)) {
+                            ConsoleOutput.newCustomerCreated(customer);
+                        }
+                    } catch (Exception e) {
+                        ConsoleOutput.failedToCreateCustomer();
                     }
-                }catch (Exception e) {
-                    ConsoleOutput.failedToCreateCustomer();
+                } else{
+                    System.out.println("Kunde existiert bereits mit der Kundennummer: " + customer.getCustomerNumber());
                 }
-                finally {
-                    determineNextAction();
-                }
+                determineNextAction();
+
             }
             case 5 -> {
                 System.out.println("Die Anwendung wird beendet.");

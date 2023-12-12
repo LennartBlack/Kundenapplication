@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class Customer {
 
     //Attributes
-    private int id;
+    private int customerNumber;
     private String gender;
     private String title;
     private String name;
@@ -24,11 +24,11 @@ public class Customer {
 
     // TODO: Konstruktoren nutzen statt alles über Setter zu machen
     //Getter & Setter
-    public int getId() {
-        return id;
+    public int getCustomerNumber() {
+        return customerNumber;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setCustomerNumber(int customerNumber) {
+        this.customerNumber = customerNumber;
     }
     public String getGender() {
         return gender;
