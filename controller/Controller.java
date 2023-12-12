@@ -20,7 +20,6 @@ public class Controller {
     // Constructor
     public Controller(){
     }
-    // TODO nach Deklarationsblöcken (Attribute, Konstruktoren, Methoden, GEtter und Setter) immer Leerzeilen
 
     // Methods
     public void determineNextAction() throws SQLException {
@@ -37,7 +36,6 @@ public class Controller {
 
         switch (benutzereingabe) {
             case 1 -> {
-                // TODO eigenen Customer anlegen statt abfragen
                 // Hier Methoden zur Kundensuche einbinden
                 /*String sqlstringquery = "SELECT * FROM Costumer_application.costumer WHERE name='Saskia'";
                 //query() kann null returnen
