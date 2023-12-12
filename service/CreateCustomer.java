@@ -2,6 +2,8 @@ package service;
 
 import modell.Customer;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -41,23 +43,29 @@ public class CreateCustomer {
 
         System.out.println();
 
-        customer.setName(scanner.nextLine());
         System.out.println("Vorname?");
-        customer.setName(scanner.nextLine());
-
+        String name = scanner.nextLine();
+        while (!name.matches("^[a-zA-Z]+$")){
+            System.out.println("Vorname?");
+            name = scanner.nextLine();
+        }
+        customer.setName(name);
         System.out.println();
 
         System.out.println("Nachname?");
-        customer.setFamilyName(scanner.nextLine());
+        String familyName = scanner.nextLine();
+        while (!familyName.matches("^[a-zA-Z]+$")){
+            System.out.println("Nachname?");
+            familyName = scanner.nextLine();
+        }
+        customer.setFamilyName(familyName);
         System.out.println();
 
         System.out.println("Geburtsdatum? <<yyyy-MM-dd>>");
         String birthday = scanner.nextLine();
-        try{
-            customer.setBirthday(LocalDate.parse(birthday));
-        }
-        catch(DateTimeException e){
-            customer.setBirthday(null);
+        while (!isValidDateFormat(birthday,"dd-MM-yyyy")){
+            System.out.println("Geburtsdatum? <<yyyy-MM-dd>>");
+            birthday = scanner.nextLine();
         }
         System.out.println();
 
@@ -70,27 +78,47 @@ public class CreateCustomer {
         System.out.println();
 
         System.out.println("PLZ?");
-        customer.setPlz(scanner.nextLine());
+        String postcode = scanner.nextLine();
+        while (postcode.matches("^[a-zA-Z]+$")){
+            System.out.println("PLZ?");
+            postcode = scanner.nextLine();
+        }
+        customer.setPlz(postcode);
         System.out.println();
 
         System.out.println("Stadt?");
-        customer.setCity(scanner.nextLine());
+        String city = scanner.nextLine();
+        while(city.matches("^[a-zA-Z]+$")){
+            System.out.println("Stadt?");
+            city = scanner.nextLine();
+        }
+        customer.setCity(city;
         System.out.println();
 
         System.out.println("Telefon?");
-        customer.setTelefon(scanner.nextLine());
+        String telefon = scanner.nextLine();
+        while(!telefon.matches("\\d+")){
+            System.out.println("Telefon?");
+            telefon = scanner.nextLine();
+        }
+        customer.setTelefon(telefon);
         System.out.println();
 
         System.out.println("Mobil?");
-        customer.setMobil(scanner.nextLine());
+        String mobil = scanner.nextLine();
+        while(!mobil.matches("\\d+")){
+            System.out.println("Mobil?");
+            mobil = scanner.nextLine();
+        }
+        customer.setMobil(mobil);
         System.out.println();
 
         String telefax = scanner.nextLine();
-        String valideDigits = "[0-9]";
-        while(!Pattern.matches(telefax, valideDigits)) {
+        while(!telefax.matches("\\d+")) {
             System.out.println("Telefax?");
-            customer.setTelefax(scanner.nextLine());
+            telefax = scanner.nextLine();
         }
+        customer.setTelefax(telefax);
         System.out.println();
 
         System.out.println("E-Mail?");
@@ -120,5 +148,16 @@ public class CreateCustomer {
 
 
         return customer;
+    }
+
+    private static boolean isValidDateFormat(String value, String format) {
+        try{
+            SimpleDateFormat sdf = new SimpleDateFormat(format);
+            sdf.setLenient(false);
+            sdf.parse(value);
+            return true;
+        } catch (ParseException e){
+            return false;
+        }
     }
 }

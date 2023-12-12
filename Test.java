@@ -5,7 +5,7 @@ import java.io.ByteArrayInputStream;
 public class Test {
     public static Scanner scanner;
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        String zahl1 = "1";
+        /*String zahl1 = "1";
         String zahl2 = "2";
         String zahl5 = "5";
 
@@ -29,7 +29,14 @@ public class Test {
         String[] testArray = new String[]{"1", "2", "Max", "Mustermann", "Weg", "3b", "12345", "Burghausen", "123", "456", "789", "mm@ewe.de"};
         //kundenanlegung();
         System.out.println("**********************");
+         */
+        Test.scanner = new Scanner(System.in);
+
         System.out.println();
+        String a = "2345";
+        a = scanner.nextLine();
+        System.out.println(a.matches("\\d+"));
+
     }
 
     private static void twoInputs(String input1, String input2) throws SQLException, ClassNotFoundException {
