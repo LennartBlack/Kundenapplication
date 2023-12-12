@@ -1,15 +1,17 @@
 package service;
 
 import modell.Customer;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
 
 public class CreateCustomer {
+    //Constructor
     private CreateCustomer(){
     }
+
+    //Methods
     public static Customer createCustomer() {
         Scanner scanner = new Scanner(System.in);
         Customer customer = new Customer();
@@ -72,7 +74,7 @@ public class CreateCustomer {
             System.out.println("Fehlerhafte Eingabe. Geben Sie die Postleitzahl der Wohnadresse des Kunden ein.");
             postcode = scanner.nextLine();
         }
-        customer.setPlz(postcode);
+        customer.setPostcode(postcode);
         System.out.println();
 
         System.out.println("Geben Sie die Stadt/ Ort der Wohnadresse des Kunden ein?");
@@ -137,7 +139,12 @@ public class CreateCustomer {
 
         return customer;
     }
-
+    /**
+     *
+     * @param value to be checked whether it is in the correct format or not
+     * @param format String which sets a SimpleDateFormat to parse the parameter value
+     * @return whether the value is in the correct format or not
+     */
     private static boolean isValidDateFormat(String value, String format) {
         try{
             SimpleDateFormat sdf = new SimpleDateFormat(format);

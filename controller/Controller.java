@@ -13,9 +13,6 @@ import java.util.Scanner;
 
 // TODO Dibos io klasse verwenden
 public class Controller {
-    // Attribute
-    InsertCustomer insertCustomer;
-    private Scanner scanner;
 
     // Constructor
     public Controller(){
@@ -25,7 +22,7 @@ public class Controller {
     public void determineNextAction() throws SQLException {
         System.out.println();
         System.out.println("Welche Aktion möchtest du als nächstes ausführen? ");
-        this.scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         System.out.println("1 für Kunden suchen");
         System.out.println("2 für Kunden updaten");
         System.out.println("3 für Kunden löschen");
@@ -57,7 +54,7 @@ public class Controller {
                 customer1.setBirthday(LocalDate.parse("1900-12-31"));
                 customer1.setStreet("Musterstrasse");
                 customer1.setHouseNumber("1");
-                customer1.setPlz("12345");
+                customer1.setPostcode("12345");
                 customer1.setCity("Musterdorf");
                 customer1.setMobil("01234567");
                 customer1.setTelefon("+49 30 123456789");
@@ -73,7 +70,7 @@ public class Controller {
                 customer2.setFamilyName("Musterfrau");
                 customer2.setStreet("Musterstrasse");
                 customer2.setHouseNumber("1");
-                customer2.setPlz("12345");
+                customer2.setPostcode("12345");
                 customer2.setCity("Musterdorf");
                 customer2.setTelefon("+49 30 123456789");
                 customer2.setEmail("lea@dein-email-provider.de");
@@ -100,7 +97,10 @@ public class Controller {
             }
             case 4 -> {
                 Customer customer = CreateCustomer.createCustomer();
+
+                //Checks whether a customer with the exact same name and address already exists
                 if(CheckDuplicate.checkDuplicate(customer) != -1) {
+                    //Not the case: Inserts a new customer into the database
                     try {
                         if (InsertCustomer.insertCostumerToDatabase(customer)) {
                             ConsoleOutput.newCustomerCreated(customer);
@@ -111,8 +111,8 @@ public class Controller {
                 } else{
                     System.out.println("Kunde existiert bereits mit der Kundennummer: " + customer.getCustomerNumber());
                 }
-                determineNextAction();
 
+                determineNextAction();
             }
             case 5 -> {
                 System.out.println("Die Anwendung wird beendet.");

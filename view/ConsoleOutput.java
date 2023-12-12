@@ -32,7 +32,7 @@ public class ConsoleOutput {
         System.out.println("***Adresse***");
         System.out.println("Straße: " + convertNullToBusinessLanguage(customer.getStreet()));
         System.out.println("Hausnummer: " + convertNullToBusinessLanguage(customer.getHouseNumber()));
-        System.out.println("PLZ: " + convertNullToBusinessLanguage(customer.getPlz()));
+        System.out.println("PLZ: " + convertNullToBusinessLanguage(customer.getPostcode()));
         System.out.println("Stadt: " + convertNullToBusinessLanguage(customer.getCity()));
         System.out.println();
         System.out.println("***Kontakt***");

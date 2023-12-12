@@ -16,9 +16,9 @@ public class Database {
     }
 
     //Methods
-    /**
+    /** Executes a SQL-Query with a PreparedStatement
      *
-     * @param sqlQuery Muss eine korrekte SQL-Query in Form eines String
+     * @param sqlQuery Muss eine korrekte SQL-Query in Form eines String enthalten
      * @return In case the query succeeded method returns a ResulSet. In case the query failed return is null.
      * @throws SQLException
      */
@@ -36,7 +36,7 @@ public class Database {
     /** Method to delete or update a customer
      *
      * @param sqlQuery Delete-Query
-     * @return affected rows if successfull. Otherwise -1.
+     * @return affected rows if successfully otherwise -1.
      */
     public static int executeUpdate(String sqlQuery){
         try {
@@ -52,10 +52,10 @@ public class Database {
         return -1;
     }
 
-    /**
+    /**Insert Statement to add a new customer
      *
-     * @param insertQuery Insert SQL- Statement in Textform.
-     * @return Die von der Datenbank generierte ID
+     * @param insertQuery Insert Statement as String
+     * @return When successfully inserted the customer returns its customer number
      */
     public static Optional<Integer> insertStatement(String insertQuery) throws SQLException {
         try {
@@ -75,13 +75,15 @@ public class Database {
             System.out.println("Kritischer Fehler.");
 
         }
-
         return Optional.empty();
     }
 
+    /** Creats a connection to MySQL via JDBC
+     *
+     * @return the connection
+     */
     public static Connection getConnection() {
         try {
-            // TODO für später: Verbindung erst bei Datenbankaufruf herstellen und dann auch wieder schließen
             // Registriere den MySQL JDBC-Treiber
             Class.forName("com.mysql.cj.jdbc.Driver");
 

@@ -14,7 +14,7 @@ public class Customer {
     private LocalDate birthday;
     private String street;
     private String houseNumber;
-    private String plz;
+    private String postcode;
     private String city;
     private String telefon;
     private String mobil;
@@ -22,7 +22,7 @@ public class Customer {
     private String email;
     private boolean newsletter;
 
-    // TODO: Konstruktoren nutzen statt alles über Setter zu machen
+
     //Getter & Setter
     public int getCustomerNumber() {
         return customerNumber;
@@ -92,12 +92,12 @@ public class Customer {
         this.houseNumber = houseNumber;
     }
 
-    public String getPlz() {
-        return plz;
+    public String getPostcode() {
+        return postcode;
     }
 
-    public void setPlz(String plz) {
-        this.plz = plz;
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
     }
 
     public String getCity() {

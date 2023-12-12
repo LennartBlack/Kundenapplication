@@ -18,6 +18,7 @@ public class DeleteCustomer {
         while(customerNumberToDelete<1){
             customerNumberToDelete = scanner.nextInt();
         }
+
         int affectedRows = Database.executeUpdate("Delete from Costumer_application.customer where customer_number=" + customerNumberToDelete);
         if(affectedRows == -1){
             throw new DeleteCustomerFailed();
