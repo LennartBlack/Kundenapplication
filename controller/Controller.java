@@ -1,10 +1,7 @@
 package controller;
 
 import modell.Customer;
-import service.CheckDuplicate;
-import service.CreateCustomer;
-import service.DeleteCustomer;
-import service.InsertCustomer;
+import service.*;
 import service.exceptions.DeleteCustomerFailed;
 import view.ConsoleOutput;
 import java.sql.SQLException;
@@ -33,15 +30,7 @@ public class Controller {
 
         switch (benutzereingabe) {
             case 1 -> {
-                // Hier Methoden zur Kundensuche einbinden
-                /*String sqlstringquery = "SELECT * FROM Costumer_application.costumer WHERE name='Saskia'";
-                //query() kann null returnen
-                ResultSet resultSet = database.executeQuery(sqlstringquery);
-
-                Customer[] c = MapCustomerOperations.mapCustomerFromDatabase(resultSet);
-                for (Customer customer : c) {
-                    ConsoleOutput.kundenausgabe(customer);
-                }*/
+                SearchCustomer.searchCustomer();
 
                 System.out.println();
                 System.out.println("Die Möglichkeit zur Kundensuche ist noch nicht implementiert. Die Ausgabe aber schon.");
