@@ -38,7 +38,11 @@ public class ConsoleOutput {
         System.out.println();
         System.out.println();
     }
-
+    public static void greetUser(){
+        System.out.println("Herzlich Willkommen in dem Kundenmanagementsystem.");
+        System.out.println("Dies ist eine konsolenbasierte Anwendung");
+        System.out.println("Die Eingabe erfolgt rein über die Tastatur.");
+    }
     public static void printString(String string){
         System.out.println(string);
     }
