@@ -27,6 +27,8 @@ public class MapCustomer {
     private static Customer mapCustomerFromDatabase(ResultSet resultSet) throws SQLException {
         Customer customer = new Customer();
 
+        customer.setCustomerNumber(resultSet.getInt(1));
+
         customer.setGender(resultSet.getNString(2));
 
         customer.setTitle(resultSet.getNString(3));
