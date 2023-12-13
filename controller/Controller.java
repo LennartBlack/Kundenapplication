@@ -7,7 +7,6 @@ import view.ConsoleOutput;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Scanner;
 
 // TODO Dibos io klasse verwenden
@@ -34,8 +33,7 @@ public class Controller {
             case 1 -> {
                 ResultSet resultSet = SearchCustomer.searchCustomer();
                 if(resultSet.next()) {
-                    Customer[] queryResults = MapCustomer.mapCustomerFromDatabase(resultSet);
-
+                    Customer[] queryResults = MapCustomer.mapResultSetFromDatabase(resultSet);
                     for (Customer customer : queryResults) {
                         ConsoleOutput.kundenausgabe(customer);
                     }

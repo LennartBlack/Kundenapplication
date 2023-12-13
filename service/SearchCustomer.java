@@ -66,7 +66,7 @@ public class SearchCustomer {
         }
 
         String sqlQuery = sqlstringquerypreset + sqlqueryclaus;
-        System.out.println(sqlQuery);
+
         return Database.executeQuery(sqlQuery);
     }
 }
