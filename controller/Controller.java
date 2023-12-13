@@ -41,9 +41,14 @@ public class Controller {
             case 2 -> {
                 ResultSet resultSet = SearchCustomer.searchCustomer();
 
-                Customer[] queryResults = MapCustomer.mapCustomerFromDatabase(resultSet);
-                for (Customer customer : queryResults) {
-                    ConsoleOutput.kundenausgabe(customer);
+                if(resultSet.next()) {
+                    Customer[] queryResults = MapCustomer.mapCustomerFromDatabase(resultSet);
+
+                    for (Customer customer : queryResults) {
+                        ConsoleOutput.kundenausgabe(customer);
+                    }
+                } else{
+                    System.out.println("Keine Ergebnisse.");
                 }
 
                 determineNextAction();

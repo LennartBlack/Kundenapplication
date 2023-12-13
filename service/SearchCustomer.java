@@ -45,9 +45,10 @@ public class SearchCustomer {
             case  2 ->{
                 System.out.println("Geben Sie den Vornamen des Kunden ein.");
                 String name = scanner.nextLine();
+                name = scanner.nextLine();
                 System.out.println("Geben Sie den Nachnamen des Kunden ein.");
                 String familyName = scanner.nextLine();
-                sqlqueryclaus = "name = " + name + " AND family_name = " + familyName + ";";
+                sqlqueryclaus = "name = '" + name + "' AND family_name = '" + familyName + "';";
             }
             case 3 ->{
                 System.out.println("Geben Sie die Straße des Kunden ein");
@@ -65,6 +66,7 @@ public class SearchCustomer {
         }
 
         String sqlQuery = sqlstringquerypreset + sqlqueryclaus;
+        System.out.println(sqlQuery);
         return Database.executeQuery(sqlQuery);
     }
 }

@@ -24,6 +24,7 @@ public class Database {
      */
     public static ResultSet executeQuery(String sqlQuery){
         try {
+            System.out.println("Convert String to prepstate");
             PreparedStatement preparedStatement = getConnection().prepareStatement(sqlQuery);
             return preparedStatement.executeQuery();
         }
