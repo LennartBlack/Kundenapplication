@@ -12,7 +12,7 @@ public class MapCustomer {
     }
 
     //Methods
-    public static Customer[] mapCustomerFromDatabase(ResultSet resultSet) throws SQLException {
+    public static Customer[]  mapCustomerFromDatabase(ResultSet resultSet) throws SQLException {
         ArrayList<Customer> customerArrayList = new ArrayList<>();
         while(resultSet.next()) {
             Customer customer = new Customer();

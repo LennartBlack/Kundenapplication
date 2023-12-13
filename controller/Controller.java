@@ -32,15 +32,7 @@ public class Controller {
 
         switch (benutzereingabe) {
             case 1 -> {
-                SearchCustomer.searchCustomer();
-
-
-                System.out.println();
-                determineNextAction();
-            }
-            case 2 -> {
                 ResultSet resultSet = SearchCustomer.searchCustomer();
-
                 if(resultSet.next()) {
                     Customer[] queryResults = MapCustomer.mapCustomerFromDatabase(resultSet);
 
@@ -50,6 +42,12 @@ public class Controller {
                 } else{
                     System.out.println("Keine Ergebnisse.");
                 }
+
+                System.out.println();
+                determineNextAction();
+            }
+            case 2 -> {
+                System.out.println("Die Möglichkeit der Änderung von Kundendaten ist bisher nicht implementiert.");
 
                 determineNextAction();
             }

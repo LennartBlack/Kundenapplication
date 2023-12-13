@@ -29,6 +29,7 @@ public class Database {
             return preparedStatement.executeQuery();
         }
         catch (SQLException sqlException){
+            System.out.println("Tset3");
             ConsoleOutput.printString(sqlException.toString());
         }
         return null;
