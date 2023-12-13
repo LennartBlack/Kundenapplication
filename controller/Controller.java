@@ -4,6 +4,8 @@ import modell.Customer;
 import service.*;
 import service.exceptions.DeleteCustomerFailed;
 import view.ConsoleOutput;
+
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -37,8 +39,12 @@ public class Controller {
                 determineNextAction();
             }
             case 2 -> {
-                // Hier Methoden zur Kundenänderung einbinden
-                System.out.println("Die Möglichkeit zur Kundenänderung ist noch nicht implementiert.");
+                ResultSet resultSet = SearchCustomer.searchCustomer();
+
+                Customer[] queryResults = MapCustomer.mapCustomerFromDatabase(resultSet);
+                for (Customer customer : queryResults) {
+                    ConsoleOutput.kundenausgabe(customer);
+                }
 
                 determineNextAction();
             }

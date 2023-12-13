@@ -15,7 +15,7 @@ public class SearchCustomer {
     private SearchCustomer(){}
 
     //Methods
-    public static void searchCustomer() throws SQLException {
+    public static ResultSet searchCustomer() throws SQLException {
         // Hier Methoden zur Kundensuche einbinden
         String sqlstringquerypreset = "SELECT * FROM Costumer_application.customer WHERE ";
         Scanner scanner = new Scanner(System.in);
@@ -65,11 +65,6 @@ public class SearchCustomer {
         }
 
         String sqlQuery = sqlstringquerypreset + sqlqueryclaus;
-        ResultSet resultSet = Database.executeQuery(sqlQuery);
-
-        Customer[] queryResults = MapCustomer.mapCustomerFromDatabase(resultSet);
-        for (Customer customer : queryResults) {
-            ConsoleOutput.kundenausgabe(customer);
-        }
+        return Database.executeQuery(sqlQuery);
     }
 }
