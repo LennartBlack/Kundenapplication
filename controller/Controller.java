@@ -32,39 +32,6 @@ public class Controller {
             case 1 -> {
                 SearchCustomer.searchCustomer();
 
-                System.out.println();
-                System.out.println("Die Möglichkeit zur Kundensuche ist noch nicht implementiert. Die Ausgabe aber schon.");
-                Customer customer1 = new Customer();
-                customer1.setCustomerNumber(0);
-                customer1.setGender("Herr");
-                customer1.setTitle("Dr.");
-                customer1.setName("Max");
-                customer1.setFamilyName("Mustermann");
-                customer1.setBirthday(LocalDate.parse("1900-12-31"));
-                customer1.setStreet("Musterstrasse");
-                customer1.setHouseNumber("1");
-                customer1.setPostcode("12345");
-                customer1.setCity("Musterdorf");
-                customer1.setMobil("01234567");
-                customer1.setTelefon("+49 30 123456789");
-                customer1.setTelefax("+49 30 234567891");
-                customer1.setEmail("max@dein-email-provider.de");
-                customer1.setNewsletter(true);
-                ConsoleOutput.kundenausgabe(customer1);
-
-
-                Customer customer2 = new Customer();
-                customer2.setCustomerNumber(1);
-                customer2.setName("Lea");
-                customer2.setFamilyName("Musterfrau");
-                customer2.setStreet("Musterstrasse");
-                customer2.setHouseNumber("1");
-                customer2.setPostcode("12345");
-                customer2.setCity("Musterdorf");
-                customer2.setTelefon("+49 30 123456789");
-                customer2.setEmail("lea@dein-email-provider.de");
-                customer2.setNewsletter(false);
-                //ConsoleOutput.kundenausgabe(customer2);
 
                 System.out.println();
                 determineNextAction();
