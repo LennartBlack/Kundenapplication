@@ -24,5 +24,6 @@ public class CheckDuplicate {
         catch (SQLException e){
             System.out.println("Kritischer Fehler. Bitte kontaktieren Sie den Anwendungsadministrator.");
         }
+        return -1;
     }
 }
