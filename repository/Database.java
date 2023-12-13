@@ -27,8 +27,10 @@ public class Database {
             PreparedStatement preparedStatement = getConnection().prepareStatement(sqlQuery);
             return preparedStatement.executeQuery();
         }
-        catch (SQLException sqlException){
-            ConsoleOutput.printString(sqlException.toString());
+        catch (SQLSyntaxErrorException sqlSyntaxErrorException){
+            System.out.println("Kritische Fehler: SQL-Syntax-Fehler. Bitte kontaktieren Sie den Anwendungsadministrator.");
+        } catch (SQLException e) {
+            System.out.println("Kritische Fehler: SQL-Fehler. Bitte kontaktieren Sie den Anwendungsadministrator.");
         }
         return null;
     }

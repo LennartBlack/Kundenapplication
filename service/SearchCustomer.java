@@ -7,6 +7,7 @@ import view.ConsoleOutput;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.SQLSyntaxErrorException;
 import java.util.Scanner;
 
 public class SearchCustomer {
@@ -15,7 +16,7 @@ public class SearchCustomer {
     private SearchCustomer(){}
 
     //Methods
-    public static ResultSet searchCustomer() throws SQLException {
+    public static ResultSet searchCustomer(){
         // Hier Methoden zur Kundensuche einbinden
         String sqlstringquerypreset = "SELECT * FROM Costumer_application.customer WHERE ";
         Scanner scanner = new Scanner(System.in);
@@ -53,6 +54,7 @@ public class SearchCustomer {
             case 3 ->{
                 System.out.println("Geben Sie die Straße des Kunden ein");
                 String street = scanner.nextLine();
+                street = scanner.nextLine();
                 System.out.println("Geben Sie die Hausnummer ein");
                 String houseNumber = scanner.nextLine();
                 System.out.println("Geben Sie die Postleitzahl ein");
