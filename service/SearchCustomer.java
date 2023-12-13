@@ -10,6 +10,11 @@ import java.sql.SQLException;
 import java.util.Scanner;
 
 public class SearchCustomer {
+
+    //Constructor
+    private SearchCustomer(){}
+
+    //Methods
     public static void searchCustomer() throws SQLException {
         // Hier Methoden zur Kundensuche einbinden
         String sqlstringquerypreset = "SELECT * FROM Costumer_application.customer WHERE ";
@@ -30,7 +35,7 @@ public class SearchCustomer {
             userInput = scanner.nextInt();
         }
 
-        String sqlqueryclaus;
+        String sqlqueryclaus = "";
         switch (userInput){
             case 1 ->{
                 System.out.println("Geben Sie die Kundennummer ein, nach de gesucht werden soll.");
